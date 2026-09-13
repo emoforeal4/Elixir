@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Rowan — Motion Designer &amp; Front-End Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand">
+    <span class="reel-icon" aria-hidden="true"></span>
+    A. ROWAN
+  </a>
+  <nav class="nav__links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Everything below lives inside its own scroll/perspective context so the
+     fixed nav above never gets caught up in the 3D transform stacking. -->
+<div class="parallax-root" id="parallaxRoot">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__sprockets hero__sprockets--left" aria-hidden="true"></div>
+  <div class="hero__sprockets hero__sprockets--right" aria-hidden="true"></div>
+
+  <div class="parallax-scene" aria-hidden="true">
+    <div class="parallax-layer layer-back">
+      <div class="glow glow--amber"></div>
+      <div class="glow glow--teal"></div>
+    </div>
+    <div class="parallax-layer layer-mid">
+      <div class="grain"></div>
+      <div class="scanlines"></div>
+    </div>
+  </div>
+
+  <div class="hero__content parallax-layer layer-front">
+    <p class="eyebrow mono">DIR. / DEV — SHOWREEL 2026</p>
+    <h1 class="hero__title">
+      <span class="line">Motion is</span>
+      <span class="line line--accent">the message.</span>
+    </h1>
+    <p class="hero__sub">
+      I build web experiences with the pacing of a film cut —
+      title cards, depth, and scroll that feels directed, not decorated.
+    </p>
+    <div class="hero__actions">
+      <a href="#services" class="btn btn--primary">View the reel</a>
+      <a href="#contact" class="btn btn--ghost">Start a project</a>
+    </div>
+  </div>
+
+  <div class="hero__timecode mono" id="timecode" aria-hidden="true">00:00:00:00</div>
+  <div class="scroll-cue mono" aria-hidden="true">SCROLL <span></span></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="ghost-layer layer-back" aria-hidden="true">
+    <span class="ghost-numeral">01</span>
+  </div>
+
+  <div class="section__inner about__grid parallax-layer layer-front">
+    <div class="about__frame reveal">
+      <div class="about__frame-inner">
+        <span class="mono frame-label">TAKE 03 — GOOD</span>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <p class="eyebrow mono reveal">01 — ABOUT</p>
+      <h2 class="section__title reveal">Ten years behind two different lenses.</h2>
+      <p class="reveal">
+        I spent the first half of my career editing brand films — learning how
+        a well-timed cut, a slow push-in, or a held frame can carry more
+        feeling than a dozen lines of copy. The second half has been spent
+        building for the browser, where I found that scroll position is just
+        another timeline.
+      </p>
+      <p class="reveal">
+        Now I sit between the two: designing and developing sites that borrow
+        their pacing from cinema — depth, parallax, and restraint — and their
+        structure from good front-end engineering.
+      </p>
+      <div class="about__stats reveal">
+        <div class="stat">
+          <span class="stat__num mono">54</span>
+          <span class="stat__label">Projects shipped</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono">10</span>
+          <span class="stat__label">Years in production</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono">9</span>
+          <span class="stat__label">Industry awards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section skills" id="skills">
+  <div class="ghost-layer layer-back" aria-hidden="true">
+    <span class="ghost-numeral">02</span>
+  </div>
+
+  <div class="section__inner parallax-layer layer-front">
+    <p class="eyebrow mono reveal">02 — SKILLS</p>
+    <h2 class="section__title reveal">What's on the reel.</h2>
+
+    <div class="skills__grid">
+      <div class="skill-card reveal">
+        <div class="skill-card__head">
+          <span class="mono">A</span>
+          <h3>Motion &amp; Animation</h3>
+        </div>
+        <ul class="gauge-list">
+          <li><span>Scroll-driven storytelling</span><span class="gauge"><i style="--level:95%"></i></span></li>
+          <li><span>After Effects → CSS translation</span><span class="gauge"><i style="--level:90%"></i></span></li>
+          <li><span>Micro-interactions</span><span class="gauge"><i style="--level:88%"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card__head">
+          <span class="mono">B</span>
+          <h3>Front-End Development</h3>
+        </div>
+        <ul class="gauge-list">
+          <li><span>Semantic HTML &amp; accessible markup</span><span class="gauge"><i style="--level:92%"></i></span></li>
+          <li><span>Modern CSS (Grid, custom props, 3D)</span><span class="gauge"><i style="--level:96%"></i></span></li>
+          <li><span>Vanilla JS &amp; performance</span><span class="gauge"><i style="--level:85%"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card__head">
+          <span class="mono">C</span>
+          <h3>Design Systems</h3>
+        </div>
+        <ul class="gauge-list">
+          <li><span>Typography &amp; pacing</span><span class="gauge"><i style="--level:93%"></i></span></li>
+          <li><span>Component libraries</span><span class="gauge"><i style="--level:80%"></i></span></li>
+          <li><span>Brand-to-web translation</span><span class="gauge"><i style="--level:87%"></i></span></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-card__head">
+          <span class="mono">D</span>
+          <h3>Tooling</h3>
+        </div>
+        <ul class="gauge-list">
+          <li><span>Figma &amp; prototyping</span><span class="gauge"><i style="--level:90%"></i></span></li>
+          <li><span>Git &amp; deployment pipelines</span><span class="gauge"><i style="--level:84%"></i></span></li>
+          <li><span>Cross-browser QA</span><span class="gauge"><i style="--level:89%"></i></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section services" id="services">
+  <div class="ghost-layer layer-back" aria-hidden="true">
+    <span class="ghost-numeral">03</span>
+  </div>
+
+  <div class="section__inner parallax-layer layer-front">
+    <p class="eyebrow mono reveal">03 — SERVICES</p>
+    <h2 class="section__title reveal">Four ways to work together.</h2>
+
+    <div class="scenes">
+      <article class="scene-card reveal">
+        <span class="scene-card__tag mono">SCENE 01</span>
+        <h3>Brand Films</h3>
+        <p>Short-form video direction and edit — from concept board to final color pass.</p>
+      </article>
+      <article class="scene-card reveal">
+        <span class="scene-card__tag mono">SCENE 02</span>
+        <h3>Web Experiences</h3>
+        <p>Full site design and build, with motion treated as a first-class design material.</p>
+      </article>
+      <article class="scene-card reveal">
+        <span class="scene-card__tag mono">SCENE 03</span>
+        <h3>Motion Systems</h3>
+        <p>Reusable animation guidelines so your team can ship consistent movement at scale.</p>
+      </article>
+      <article class="scene-card reveal">
+        <span class="scene-card__tag mono">SCENE 04</span>
+        <h3>Consulting</h3>
+        <p>A second set of eyes on pacing, performance, and craft before you launch.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="ghost-layer layer-back" aria-hidden="true">
+    <span class="ghost-numeral">04</span>
+  </div>
+
+  <div class="section__inner contact__grid parallax-layer layer-front">
+    <div class="contact__intro">
+      <p class="eyebrow mono reveal">04 — CONTACT</p>
+      <h2 class="section__title reveal">Let's roll camera.</h2>
+      <p class="reveal">
+        Have a project in mind? Tell me a little about it and I'll get back
+        to you within two business days.
+      </p>
+      <ul class="contact__details reveal mono">
+        <li>hello@alexrowan.studio</li>
+        <li>+1 (555) 019-0423</li>
+        <li>Based in Los Angeles, CA — working worldwide</li>
+      </ul>
+    </div>
+
+    <form class="contact__form reveal" id="contactForm" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        <span class="field__error" id="nameError"></span>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <span class="field__error" id="emailError"></span>
+      </div>
+      <div class="field">
+        <label for="message">Tell me about the project</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <span class="field__error" id="messageError"></span>
+      </div>
+      <button type="submit" class="btn btn--primary btn--wide">Send message</button>
+      <p class="field__status mono" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__strip" aria-hidden="true"></div>
+  <div class="footer__inner">
+    <span class="mono">© 2026 ALEX ROWAN — ALL RIGHTS RESERVED</span>
+    <div class="footer__socials">
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="Vimeo">VI</a>
+      <a href="#" aria-label="LinkedIn">LN</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.parallax-root -->
+
+<script src="script.js"></script>
+</body>
+</html>

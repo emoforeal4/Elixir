@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Responsive overrides for Elixir template
+   Loaded AFTER styles.css so these rules win at the breakpoints below.
+   Bootstrap 5 is loaded for the grid/utility classes (img-fluid, navbar
+   collapse, etc.) but this file handles stacking of the template's own
+   custom classes, since styles.css was not part of the original layout
+   info available when this file was written.
+   ========================================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------------------------------------------------------------------
+   Tablet & below (<= 992px)
+   --------------------------------------------------------------------- */
+@media (max-width: 992px) {
+
+    .container {
+        width: 100%;
+        max-width: 720px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Top info bar */
+    .top .main-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        text-align: left;
+    }
+
+    /* Services / risk / provided-things / our-team / news grids */
+    #risk .main,
+    #services .services,
+    .service-contact,
+    #efforts .why-us,
+    #provided-things .provided-things,
+    #our-team .our-team,
+    #latest-news .news,
+    #image .report,
+    #header-2 .numbers,
+    #images .fast-logo,
+    #sign-up .about-us {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #risk .business,
+    #provided-things .creative-support,
+    #provided-things .creative-support-1,
+    #our-team .thomas,
+    #latest-news .news-tax,
+    #image .fast,
+    #efforts .creative,
+    .service-contact .call {
+        flex: 0 0 45%;
+        max-width: 45%;
+        margin-bottom: 30px;
+    }
+
+    /* Services rows (image + text side by side) keep row but shrink gaps */
+    #services .service-1 {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    #efforts .why {
+        flex-direction: column;
+    }
+
+    #efforts .why img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Feedback / signup forms */
+    #feedback .feedback {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #sign-up .sign-up {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    #sign-up .know-about-us span {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #client-2 .client-2 {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Mobile (<= 768px)
+   --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    /* Top bar */
+    .top .main-bar {
+        font-size: 0.85rem;
+    }
+
+    .top .location {
+        flex-wrap: wrap;
+    }
+
+    /* Nav becomes collapsible via Bootstrap classes */
+    nav .elixir {
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    nav .home {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-toggler {
+        display: inline-block;
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        padding: 6px 10px;
+        line-height: 0;
+    }
+
+    .navbar-collapse {
+        width: 100%;
+    }
+
+    .navbar-collapse.collapse:not(.show) {
+        display: none;
+    }
+
+    .navbar-collapse.collapse.show,
+    .navbar-collapse.collapsing {
+        display: block;
+    }
+
+    nav .home .navbar-collapse a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        text-align: left;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    nav .btn {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Header hero */
+    header .bar {
+        text-align: center;
+    }
+
+    header .bar h1 {
+        font-size: 2rem;
+    }
+
+    header .bar .more {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Wellcome section */
+    #wellcome .wellcome {
+        text-align: center;
+    }
+
+    /* All grid-of-cards sections go to a single column */
+    #risk .business,
+    #provided-things .creative-support,
+    #provided-things .creative-support-1,
+    #our-team .thomas,
+    #latest-news .news-tax,
+    #image .fast,
+    #efforts .creative,
+    .service-contact .call,
+    #header-2 .number-1,
+    #sign-up .google {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    #risk .main,
+    #services .services,
+    .service-contact,
+    #efforts .why-us,
+    #provided-things .provided-things,
+    #our-team .our-team,
+    #latest-news .news,
+    #image .report,
+    #header-2 .numbers,
+    #sign-up .about-us {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Services rows: force image above text */
+    #services .service-1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #services .service-1 img,
+    #services .image-1 img,
+    #services .image-3 img {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    /* Logo strip wraps into two columns */
+    #images .fast-logo {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    #images .fast-logo img {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    /* Forms stack and go full width */
+    #sign-up form,
+    #feedback form {
+        flex-direction: column;
+    }
+
+    #sign-up form input,
+    #feedback form input,
+    #sign-up form button,
+    #feedback form button {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    #feedback .submit-form input[type="text"] {
+        width: 100%;
+        display: block;
+    }
+
+    /* Footer */
+    footer .logo {
+        text-align: center;
+    }
+}
+
+/* ---------------------------------------------------------------------
+   Small phones (<= 480px)
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+
+    header .bar h1 {
+        font-size: 1.6rem;
+    }
+
+    header .bar p {
+        font-size: 0.95rem;
+    }
+
+    #images .fast-logo img {
+        flex: 0 0 100%;
+        max-width: 60%;
+    }
+}

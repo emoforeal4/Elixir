@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eman | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- COLOR PALETTE & GLOBAL VARS --- */
+    :root {
+      --bg-dark: #0c0d10;
+      --card-bg: rgba(22, 25, 34, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-light: #f3f4f6;
+      --text-muted: #a0a6b5;
+      --accent-gold: #f5b018;
+      --accent-glow: rgba(245, 176, 24, 0.2);
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    /* --- PARALLAX SCROLLING CONTAINER --- */
+    .parallax-container {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      perspective: 10px;
+      scroll-behavior: smooth;
+    }
+
+    /* Floating Ambient Glowing Lights (Background Parallax Layer) */
+    .parallax-glow-1 {
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(245, 176, 24, 0.25) 0%, rgba(0,0,0,0) 70%);
+      transform: translateZ(-8px) scale(1.8);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .parallax-glow-2 {
+      position: absolute;
+      top: 45%;
+      right: 5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 176, 24, 0.18) 0%, rgba(0,0,0,0) 70%);
+      transform: translateZ(-12px) scale(2.2);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* --- FIXED NAVIGATION --- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.8rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(12, 13, 16, 0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .brand-logo {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    /* --- SECTION STRUCTURE --- */
+    .section-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 5%;
+      transform-style: preserve-3d;
+    }
+
+    /* Glassmorphism Organic Card */
+    .organic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(20px);
+      width: 100%;
+      max-width: 1200px;
+      min-height: 75vh;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 4rem;
+      transform: translateZ(0);
+    }
+
+    /* HERO SECTION */
+    .hero-content {
+      z-index: 2;
+      max-width: 500px;
+    }
+
+    .hero-tag {
+      color: var(--accent-gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark);
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--card-border);
+      color: var(--text-light);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(245, 176, 24, 0.3);
+    }
+
+    /* Parallax Right Wave/Organic Element */
+    .hero-image-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-color: var(--accent-gold);
+      clip-path: path("M 100 0 C 200 150, 0 300, 100 600 L 600 600 L 600 0 Z");
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateZ(-2px) scale(1.2);
+    }
+
+    .profile-img {
+      width: 310px;
+      height: 310px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid var(--bg-dark);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* GENERAL HEADINGS */
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .full-width-card {
+      grid-template-columns: 1fr;
+      display: block;
+    }
+
+    /* SKILLS SECTION */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-gold);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* PROJECTS SECTION */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-gold);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    /* SERVICES SECTION */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--card-border);
+      padding: 2.5rem 1.8rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-gold);
+    }
+
+    /* CONTACT SECTION */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+
+    .form-control {
+      padding: 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-light);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent-gold);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 968px) {
+      .organic-card {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem;
+      }
+      .hero-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        clip-path: none;
+        border-radius: 16px;
+        margin-top: 2rem;
+        transform: none;
+      }
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED NAVIGATION -->
+  <nav>
+    <a href="#" class="brand-logo">Eman</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PARALLAX SCROLLING WRAPPER -->
+  <div class="parallax-container">
+    
+    <!-- Background Ambient Parallax Glows -->
+    <div class="parallax-glow-1"></div>
+    <div class="parallax-glow-2"></div>
+
+    <!-- HERO SECTION -->
+    <div class="section-wrapper" id="hero">
+      <div class="organic-card">
+        <div class="hero-content">
+          <p class="hero-tag">UI/UX Designer & Developer</p>
+          <h1 class="hero-title">Hello, my name is Eman</h1>
+          <p class="hero-description">
+            Short text with details about you, what you do or your professional career. You can add more information on the about section below.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800" alt="Eman Profile" class="profile-img" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <div class="section-wrapper" id="about">
+      <div class="organic-card">
+        <div class="hero-content" style="max-width: 100%;">
+          <p class="hero-tag">About Me</p>
+          <h2 class="section-title">Designing with intuition & craft</h2>
+          <p class="hero-description">
+            I am Eman, a passionate UI/UX designer and web developer dedicated to building accessible, functional, and visually striking digital web products. With a keen eye for modern typography and organic layout architecture, I transform complex ideas into seamless user experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS SECTION -->
+    <div class="section-wrapper" id="skills">
+      <div class="organic-card full-width-card">
+        <p class="hero-tag">My Expertise</p>
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3>UI/UX Design</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Figma, Adobe XD, Wireframing</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3>Frontend Dev</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">HTML5, CSS3, JavaScript</p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            <h3>Prototyping</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Interactive Flows, Micro-animations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div class="section-wrapper" id="projects">
+      <div class="organic-card full-width-card">
+        <p class="hero-tag">Portfolio</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=600" class="project-img" alt="Project 1">
+            <div class="project-info">
+              <h3>E-Commerce Interface</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Clean product experience UI design.</p>
+            </div>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" class="project-img" alt="Project 2">
+            <div class="project-info">
+              <h3>Analytics Dashboard</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Data visualization and responsive layout.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <div class="section-wrapper" id="services">
+      <div class="organic-card full-width-card">
+        <p class="hero-tag">What I Offer</p>
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Web App Development</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.8rem;">Developing responsive web design focused on clear user paths.</p>
+          </div>
+          <div class="service-card">
+            <h3>User Experience Design</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.8rem;">Creating user-centered design systems and interactive prototypes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <div class="section-wrapper" id="contact">
+      <div class="organic-card full-width-card">
+        <p class="hero-tag">Reach Out</p>
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you, Eman will get back to you soon!');">
+          <input type="text" class="form-control" placeholder="Name" required>
+          <input type="email" class="form-control" placeholder="Email" required>
+          <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+          <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer; width:fit-content;">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
